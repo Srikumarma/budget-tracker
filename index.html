@@ -13,379 +13,150 @@
     --gold-light: #E8D5A3;
     --gold-dark: #8A6A20;
     --brown: #3D2B1F;
-    --brown-mid: #6B4C3B;
     --brown-light: #A07860;
     --text: #2A1F18;
     --text-muted: #8A7A70;
     --border: rgba(196,154,60,0.2);
     --border-strong: rgba(196,154,60,0.45);
-    --cat-a: #2D4A3E;
-    --cat-a-bg: #EAF2EE;
-    --cat-b: #1A3A5C;
-    --cat-b-bg: #E8EFF7;
-    --cat-c: #4A2020;
-    --cat-c-bg: #F5EAEA;
+    --cat-a: #2D4A3E; --cat-a-bg: #EAF2EE;
+    --cat-b: #1A3A5C; --cat-b-bg: #E8EFF7;
+    --cat-c: #4A2020; --cat-c-bg: #F5EAEA;
+    --skip: #6B5B4E; --skip-bg: #F2EDE8;
   }
-
   * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--cream); color: var(--text); font-family: 'DM Sans', sans-serif; font-weight: 400; line-height: 1.6; min-height: 100vh; }
 
-  body {
-    background: var(--cream);
-    color: var(--text);
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 400;
-    line-height: 1.6;
-    min-height: 100vh;
-  }
-
-  /* ── HERO ── */
-  .hero {
-    background: var(--brown);
-    padding: 3.5rem 2rem 2.5rem;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: repeating-linear-gradient(
-      45deg,
-      transparent,
-      transparent 40px,
-      rgba(196,154,60,0.04) 40px,
-      rgba(196,154,60,0.04) 80px
-    );
-  }
-  .hero-inner {
-    max-width: 960px;
-    margin: 0 auto;
-    position: relative;
-  }
-  .hero-badge {
-    display: inline-block;
-    border: 1px solid var(--gold);
-    color: var(--gold);
-    font-size: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 4px 12px;
-    border-radius: 2px;
-    margin-bottom: 1.2rem;
-    font-weight: 500;
-  }
-  .hero h1 {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(2rem, 5vw, 3.2rem);
-    color: var(--warm-white);
-    line-height: 1.1;
-    margin-bottom: 0.5rem;
-  }
-  .hero h1 em {
-    color: var(--gold);
-    font-style: italic;
-  }
-  .hero-sub {
-    color: var(--gold-light);
-    font-size: 14px;
-    opacity: 0.8;
-    margin-bottom: 2rem;
-  }
-  .hero-meta {
-    display: flex;
-    gap: 2rem;
-    flex-wrap: wrap;
-  }
+  .hero { background: var(--brown); padding: 3.5rem 2rem 2.5rem; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(196,154,60,0.04) 40px, rgba(196,154,60,0.04) 80px); }
+  .hero-inner { max-width: 960px; margin: 0 auto; position: relative; }
+  .hero-badge { display: inline-block; border: 1px solid var(--gold); color: var(--gold); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; padding: 4px 12px; border-radius: 2px; margin-bottom: 1.2rem; font-weight: 500; }
+  .hero h1 { font-family: 'DM Serif Display', serif; font-size: clamp(2rem, 5vw, 3.2rem); color: var(--warm-white); line-height: 1.1; margin-bottom: 0.5rem; }
+  .hero h1 em { color: var(--gold); font-style: italic; }
+  .hero-sub { color: var(--gold-light); font-size: 14px; opacity: 0.8; margin-bottom: 2rem; }
+  .hero-meta { display: flex; gap: 2rem; flex-wrap: wrap; }
   .meta-item { color: rgba(253,250,247,0.6); font-size: 12px; }
   .meta-item strong { display: block; color: var(--gold-light); font-size: 13px; font-weight: 500; margin-bottom: 2px; }
 
-  /* ── TOTALS BAR ── */
-  .totals-bar {
-    background: var(--warm-white);
-    border-bottom: 1px solid var(--border);
-    padding: 1.25rem 2rem;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: 0 2px 16px rgba(61,43,31,0.08);
-  }
-  .totals-inner {
-    max-width: 960px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-  .totals-nums {
-    display: flex;
-    gap: 2rem;
-    align-items: center;
-    flex-wrap: wrap;
-  }
+  .totals-bar { background: var(--warm-white); border-bottom: 1px solid var(--border); padding: 1rem 2rem; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 16px rgba(61,43,31,0.08); }
+  .totals-inner { max-width: 960px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+  .totals-nums { display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap; }
   .tot-item { text-align: left; }
   .tot-label { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 2px; }
-  .tot-val { font-size: 18px; font-weight: 600; color: var(--text); }
-  .tot-val.big { font-size: 22px; color: var(--gold-dark); }
-  .tot-divider { width: 1px; height: 32px; background: var(--border-strong); }
-  .sel-badge {
-    background: var(--gold);
-    color: white;
-    font-size: 11px;
-    font-weight: 600;
-    padding: 4px 10px;
-    border-radius: 20px;
-    display: none;
-  }
-  .sel-badge.show { display: inline-block; }
+  .tot-val { font-size: 17px; font-weight: 600; color: var(--text); }
+  .tot-val.big { font-size: 21px; color: var(--gold-dark); }
+  .tot-val.strike { color: #9B7B5E; text-decoration: line-through; font-size: 15px; }
+  .tot-divider { width: 1px; height: 30px; background: var(--border-strong); }
+  .skip-badge { background: #9B7B5E; color: white; font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px; display: none; }
+  .skip-badge.show { display: inline-block; }
 
-  /* ── FILTERS ── */
-  .filters-wrap {
-    padding: 1.2rem 2rem 0;
-    max-width: 960px;
-    margin: 0 auto;
-  }
-  .filters {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    align-items: center;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid var(--border);
-  }
+  .filter-bar { background: var(--warm-white); border-bottom: 1px solid var(--border); padding: 0.75rem 2rem; }
+  .filter-inner { max-width: 960px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+  .filters { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
   .filter-label { font-size: 11px; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase; margin-right: 4px; }
-  .fbtn {
-    padding: 6px 16px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 500;
-    border: 1px solid var(--border-strong);
-    background: transparent;
-    color: var(--text-muted);
-    cursor: pointer;
-    transition: all .2s;
-  }
+  .fbtn { padding: 5px 15px; border-radius: 20px; font-size: 12px; font-family: 'DM Sans', sans-serif; font-weight: 500; border: 1px solid var(--border-strong); background: transparent; color: var(--text-muted); cursor: pointer; transition: all .2s; }
   .fbtn:hover { border-color: var(--gold); color: var(--gold-dark); }
   .fbtn.active { background: var(--brown); color: var(--gold-light); border-color: var(--brown); }
+  .fbtn.skip-btn.active { background: #6B5B4E; border-color: #6B5B4E; color: #F2EDE8; }
+  .sec-pill { font-size: 12px; font-weight: 600; color: var(--gold-dark); background: #FDF6E8; border: 1px solid var(--gold-light); padding: 4px 14px; border-radius: 20px; display: none; white-space: nowrap; }
+  .sec-pill.show { display: inline-block; }
 
-  /* ── MAIN ── */
-  .main {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 1.5rem 2rem 4rem;
-  }
+  .main { max-width: 960px; margin: 0 auto; padding: 1.5rem 2rem 4rem; }
 
-  /* ── CATEGORY HEADER ── */
-  .cat-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin: 2rem 0 1rem;
-  }
+  .cat-header { display: flex; align-items: center; gap: 12px; margin: 2.5rem 0 1rem; }
   .cat-header:first-child { margin-top: 0; }
-  .cat-dot {
-    width: 10px; height: 10px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
+  .cat-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
   .cat-dot.a { background: var(--cat-a); }
   .cat-dot.b { background: var(--cat-b); }
   .cat-dot.c { background: var(--cat-c); }
-  .cat-title {
-    font-family: 'DM Serif Display', serif;
-    font-size: 18px;
-    color: var(--brown);
-    flex: 1;
-  }
+  .cat-dot.skip { background: var(--skip); }
+  .cat-title { font-family: 'DM Serif Display', serif; font-size: 18px; color: var(--brown); }
+  .cat-title.skip-title { color: #6B5B4E; }
   .cat-line { flex: 1; height: 1px; background: var(--border); }
+  .cat-meta { display: flex; gap: 10px; align-items: center; flex-shrink: 0; }
+  .cat-count { font-size: 11px; color: var(--text-muted); background: var(--cream); border: 1px solid var(--border); padding: 2px 8px; border-radius: 10px; }
   .cat-total { font-size: 13px; font-weight: 600; color: var(--text-muted); }
+  .cat-total.skip-total { text-decoration: line-through; color: #9B7B5E; }
 
-  /* ── ITEM CARD ── */
-  .items-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 14px;
-  }
-  .item-card {
-    background: var(--warm-white);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 18px;
-    cursor: pointer;
-    transition: all .2s;
-    position: relative;
-    overflow: hidden;
-  }
-  .item-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: transparent;
-    transition: background .2s;
-  }
+  .items-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(268px, 1fr)); gap: 14px; }
+
+  .item-card { background: var(--warm-white); border: 1px solid var(--border); border-radius: 12px; padding: 18px; cursor: pointer; transition: all .2s; position: relative; overflow: hidden; }
+  .item-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: transparent; transition: background .2s; }
   .item-card:hover { border-color: var(--gold); box-shadow: 0 4px 20px rgba(196,154,60,0.12); transform: translateY(-1px); }
   .item-card:hover::before { background: var(--gold-light); }
-  .item-card.selected { border-color: var(--gold); background: #FFFDF5; box-shadow: 0 4px 20px rgba(196,154,60,0.18); }
-  .item-card.selected::before { background: var(--gold); }
-  .item-card.hidden { display: none; }
+  .item-card.skipped { border-color: rgba(107,91,78,0.25); background: #F9F6F3; opacity: 0.8; }
+  .item-card.skipped::before { background: #C4B5A8; }
+  .item-card.skipped:hover { opacity: 1; border-color: #9B7B5E; }
 
-  .card-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 10px;
-  }
-  .item-num {
-    width: 26px; height: 26px;
-    border-radius: 50%;
-    background: var(--cream);
-    border: 1px solid var(--border-strong);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 11px; font-weight: 600;
-    color: var(--brown-light);
-    flex-shrink: 0;
-  }
-  .item-card.selected .item-num {
-    background: var(--gold);
-    border-color: var(--gold);
-    color: white;
-  }
-  .cat-pill {
-    font-size: 9px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 3px 8px;
-    border-radius: 10px;
-  }
+  .card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
+  .item-num { width: 26px; height: 26px; border-radius: 50%; background: var(--cream); border: 1px solid var(--border-strong); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; color: var(--brown-light); flex-shrink: 0; }
+  .item-card.skipped .item-num { background: #C4B5A8; border-color: #C4B5A8; color: white; }
+
+  .card-actions { display: flex; gap: 6px; align-items: center; }
+  .cat-pill { font-size: 9px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; padding: 3px 8px; border-radius: 10px; }
   .cat-pill.a { background: var(--cat-a-bg); color: var(--cat-a); }
   .cat-pill.b { background: var(--cat-b-bg); color: var(--cat-b); }
   .cat-pill.c { background: var(--cat-c-bg); color: var(--cat-c); }
+  .cat-pill.skip { background: var(--skip-bg); color: var(--skip); }
 
-  .item-name {
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--text);
-    line-height: 1.4;
-    margin-bottom: 8px;
-  }
-  .item-size {
-    font-size: 11px;
-    color: var(--text-muted);
-    margin-bottom: 12px;
-    font-family: 'DM Sans', sans-serif;
-  }
-  .card-bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    padding-top: 12px;
-    border-top: 1px solid var(--border);
-  }
+  .skip-btn-card { width: 26px; height: 26px; border-radius: 50%; border: 1px solid var(--border-strong); background: var(--cream); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 13px; line-height: 1; color: var(--text-muted); transition: all .15s; flex-shrink: 0; }
+  .skip-btn-card:hover { background: #F5EAEA; border-color: #C4A4A4; color: #8B3030; }
+  .item-card.skipped .skip-btn-card { background: #EAF2EE; border-color: #A4C4B4; color: var(--cat-a); font-size: 11px; }
+  .item-card.skipped .skip-btn-card:hover { background: var(--cat-a); color: white; }
+
+  .item-name { font-size: 14px; font-weight: 500; color: var(--text); line-height: 1.4; margin-bottom: 8px; }
+  .item-card.skipped .item-name { color: var(--text-muted); text-decoration: line-through; text-decoration-color: #C4B5A8; }
+  .item-size { font-size: 11px; color: var(--text-muted); margin-bottom: 12px; }
+  .card-bottom { display: flex; justify-content: space-between; align-items: flex-end; padding-top: 12px; border-top: 1px solid var(--border); }
   .rate-info { font-size: 11px; color: var(--text-muted); }
   .rate-info span { display: block; }
-  .item-amount {
-    font-size: 18px;
-    font-weight: 600;
-    color: var(--gold-dark);
-    line-height: 1;
-  }
-  .item-gst {
-    font-size: 10px;
-    color: var(--text-muted);
-    text-align: right;
-    margin-top: 2px;
-  }
+  .item-amount { font-size: 18px; font-weight: 600; color: var(--gold-dark); line-height: 1; }
+  .item-card.skipped .item-amount { color: #9B7B5E; text-decoration: line-through; }
+  .item-gst { font-size: 10px; color: var(--text-muted); text-align: right; margin-top: 2px; }
 
-  /* ── DETAIL DRAWER ── */
-  .detail-drawer {
-    position: fixed;
-    bottom: 0; left: 0; right: 0;
-    background: var(--warm-white);
-    border-top: 2px solid var(--gold);
-    padding: 1.5rem 2rem;
-    transform: translateY(100%);
-    transition: transform .3s cubic-bezier(.4,0,.2,1);
-    z-index: 200;
-    box-shadow: 0 -8px 40px rgba(61,43,31,0.15);
-  }
+  .not-needed-zone { margin-top: 3rem; padding-top: 2rem; border-top: 2px dashed rgba(107,91,78,0.22); }
+  .nn-empty { text-align: center; padding: 2.5rem 1rem; color: var(--text-muted); font-size: 14px; border: 2px dashed rgba(107,91,78,0.18); border-radius: 12px; line-height: 1.8; }
+  .nn-empty-icon { font-size: 26px; display: block; margin-bottom: 8px; opacity: 0.35; }
+
+  .detail-drawer { position: fixed; bottom: 0; left: 0; right: 0; background: var(--warm-white); border-top: 2px solid var(--gold); padding: 1.5rem 2rem; transform: translateY(100%); transition: transform .3s cubic-bezier(.4,0,.2,1); z-index: 200; box-shadow: 0 -8px 40px rgba(61,43,31,0.15); }
   .detail-drawer.open { transform: translateY(0); }
   .drawer-inner { max-width: 960px; margin: 0 auto; }
-  .drawer-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 1rem;
-  }
+  .drawer-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; }
   .drawer-title { font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--brown); }
-  .drawer-close {
-    background: none; border: none; cursor: pointer;
-    width: 32px; height: 32px;
-    border-radius: 50%;
-    background: var(--cream);
-    border: 1px solid var(--border-strong);
-    color: var(--brown-light);
-    font-size: 14px;
-    display: flex; align-items: center; justify-content: center;
-    transition: all .15s;
-  }
+  .drawer-close { background: var(--cream); border: 1px solid var(--border-strong); cursor: pointer; width: 32px; height: 32px; border-radius: 50%; color: var(--brown-light); font-size: 14px; display: flex; align-items: center; justify-content: center; transition: all .15s; }
   .drawer-close:hover { background: var(--brown); color: var(--gold-light); }
-  .drawer-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 10px;
-    margin-bottom: 1rem;
-  }
-  .d-stat {
-    background: var(--cream);
-    border-radius: 8px;
-    padding: 10px 12px;
-    border: 1px solid var(--border);
-  }
+  .drawer-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-bottom: 1rem; }
+  .d-stat { background: var(--cream); border-radius: 8px; padding: 10px 12px; border: 1px solid var(--border); }
   .d-stat-label { font-size: 10px; letter-spacing: .5px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 4px; }
   .d-stat-val { font-size: 16px; font-weight: 600; color: var(--text); }
   .d-stat-val.gold { color: var(--gold-dark); }
-  .drawer-desc {
-    font-size: 13px;
-    color: var(--text-muted);
-    line-height: 1.7;
-    padding-top: 0.75rem;
-    border-top: 1px solid var(--border);
-  }
+  .drawer-desc { font-size: 13px; color: var(--text-muted); line-height: 1.7; padding-top: 0.75rem; border-top: 1px solid var(--border); margin-bottom: 0.75rem; }
+  .drawer-actions { display: flex; gap: 10px; align-items: center; padding-top: 0.75rem; border-top: 1px solid var(--border); }
+  .da-btn { padding: 7px 18px; border-radius: 20px; font-size: 12px; font-family: 'DM Sans', sans-serif; font-weight: 500; border: 1px solid; cursor: pointer; transition: all .15s; }
+  .da-skip { border-color: rgba(155,123,94,0.5); color: #6B5B4E; background: var(--skip-bg); }
+  .da-skip:hover { background: #6B5B4E; color: white; }
+  .da-restore { border-color: rgba(45,74,62,0.4); color: var(--cat-a); background: var(--cat-a-bg); }
+  .da-restore:hover { background: var(--cat-a); color: white; }
+  .da-hint { font-size: 12px; color: var(--text-muted); }
 
-  /* ── SUMMARY FOOTER ── */
-  .summary-footer {
-    background: var(--brown);
-    padding: 2.5rem 2rem;
-    margin-top: 3rem;
-  }
-  .summary-footer-inner {
-    max-width: 960px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    align-items: center;
-  }
-  .sf-left {}
+  .summary-footer { background: var(--brown); padding: 2.5rem 2rem; margin-top: 3rem; }
+  .summary-footer-inner { max-width: 960px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; }
   .sf-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-light); opacity: 0.7; margin-bottom: 8px; }
   .sf-amount { font-family: 'DM Serif Display', serif; font-size: 3rem; color: var(--warm-white); line-height: 1; }
   .sf-amount small { font-size: 1rem; font-family: 'DM Sans', sans-serif; font-weight: 400; color: var(--gold-light); display: block; margin-top: 6px; }
-  .sf-right { display: flex; flex-direction: column; gap: 10px; }
+  .sf-effective { margin-top: 1rem; padding: 12px 14px; background: rgba(196,154,60,0.1); border-radius: 8px; border: 1px solid rgba(196,154,60,0.22); }
+  .sf-eff-label { font-size: 10px; color: var(--gold-light); opacity: 0.7; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px; }
+  .sf-eff-val { font-size: 22px; font-weight: 600; color: var(--gold); }
+  .sf-eff-note { font-size: 11px; color: var(--gold-light); opacity: 0.6; margin-top: 3px; }
+  .sf-right { display: flex; flex-direction: column; gap: 8px; }
   .sf-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid rgba(196,154,60,0.15); }
   .sf-row:last-child { border-bottom: none; }
   .sf-row-label { font-size: 13px; color: var(--gold-light); opacity: 0.7; }
-  .sf-row-val { font-size: 15px; font-weight: 600; color: var(--gold-light); }
-  .milestone-label { font-size: 11px; color: var(--gold); margin-top: 4px; }
+  .sf-row-val { font-size: 14px; font-weight: 600; color: var(--gold-light); }
 
-  @media(max-width:600px){
+  @media(max-width:640px){
     .hero { padding: 2rem 1rem 1.5rem; }
     .main { padding: 1rem 1rem 4rem; }
-    .totals-bar { padding: 1rem; }
-    .filters-wrap { padding: 1rem 1rem 0; }
+    .totals-bar, .filter-bar { padding: 0.75rem 1rem; }
     .drawer-grid { grid-template-columns: repeat(3,1fr); }
     .items-grid { grid-template-columns: 1fr; }
     .summary-footer-inner { grid-template-columns: 1fr; }
@@ -394,11 +165,10 @@
 </head>
 <body>
 
-<!-- HERO -->
 <div class="hero">
   <div class="hero-inner">
-    <div class="hero-badge">Our Kitchen Renovation/div>
-    <h1>Mr. Adithyaa's</h1>
+    <div class="hero-badge">Sherin Interiors</div>
+    <h1>Mr. Adithyaa's<br><em>Kitchen Renovation</em></h1>
     <div class="hero-sub">Quotation date: 1 April 2026 &nbsp;·&nbsp; Designer: Priyadharshini &nbsp;·&nbsp; Quote by: Velmurugan.K</div>
     <div class="hero-meta">
       <div class="meta-item"><strong>Contact</strong>8610141570</div>
@@ -409,49 +179,49 @@
   </div>
 </div>
 
-<!-- STICKY TOTALS -->
 <div class="totals-bar">
   <div class="totals-inner">
     <div class="totals-nums">
       <div class="tot-item">
-        <div class="tot-label">Base total</div>
-        <div class="tot-val">₹4,27,837</div>
-      </div>
-      <div class="tot-divider"></div>
-      <div class="tot-item">
-        <div class="tot-label">GST 18%</div>
-        <div class="tot-val">₹77,011</div>
-      </div>
-      <div class="tot-divider"></div>
-      <div class="tot-item">
-        <div class="tot-label">Grand total</div>
+        <div class="tot-label">Quote total</div>
         <div class="tot-val big">₹5,04,848</div>
       </div>
       <div class="tot-divider"></div>
       <div class="tot-item">
-        <div class="tot-label">Selected</div>
-        <div class="tot-val" id="selAmt">₹0</div>
+        <div class="tot-label">Effective total</div>
+        <div class="tot-val big" id="effectiveTotal">₹5,04,848</div>
+      </div>
+      <div class="tot-divider"></div>
+      <div class="tot-item">
+        <div class="tot-label">Removed</div>
+        <div class="tot-val strike" id="skippedAmt">—</div>
+      </div>
+      <div class="tot-divider"></div>
+      <div class="tot-item">
+        <div class="tot-label">Section total</div>
+        <div class="tot-val" id="sectionTotalVal" style="color:var(--gold-dark)">—</div>
       </div>
     </div>
-    <span class="sel-badge" id="selBadge">0 items selected</span>
+    <span class="skip-badge" id="skipBadge">0 removed</span>
   </div>
 </div>
 
-<!-- FILTERS -->
-<div class="filters-wrap">
-  <div class="filters">
-    <span class="filter-label">Filter:</span>
-    <button class="fbtn active" onclick="filter('all',this)">All items</button>
-    <button class="fbtn" onclick="filter('A',this)">Kitchen Woodwork</button>
-    <button class="fbtn" onclick="filter('B',this)">Windows & Wallpaper</button>
-    <button class="fbtn" onclick="filter('C',this)">Appliances</button>
+<div class="filter-bar">
+  <div class="filter-inner">
+    <div class="filters">
+      <span class="filter-label">View:</span>
+      <button class="fbtn active" id="btn-all"    onclick="filter('all',this)">All items</button>
+      <button class="fbtn"         id="btn-A"      onclick="filter('A',this)">Kitchen Woodwork</button>
+      <button class="fbtn"         id="btn-B"      onclick="filter('B',this)">Windows & Wallpaper</button>
+      <button class="fbtn"         id="btn-C"      onclick="filter('C',this)">Appliances</button>
+      <button class="fbtn skip-btn" id="btn-skip"  onclick="filter('skip',this)">Not needed</button>
+    </div>
+    <div class="sec-pill" id="secPill"></div>
   </div>
 </div>
 
-<!-- MAIN CONTENT -->
 <div class="main" id="main"></div>
 
-<!-- DETAIL DRAWER -->
 <div class="detail-drawer" id="drawer">
   <div class="drawer-inner">
     <div class="drawer-top">
@@ -460,141 +230,152 @@
     </div>
     <div class="drawer-grid" id="d-grid"></div>
     <div class="drawer-desc" id="d-desc"></div>
+    <div class="drawer-actions" id="d-actions"></div>
   </div>
 </div>
 
 <script>
-const data = [
-  { cat:'A', sl:1, name:'Base unit with breakfast counter', size:'6045 × 860 × 600 mm', sqft:58, rate:1500, amt:87000,
-    desc:'Box type cabinets with BWP Grade both-side lamination. 2MM PVC edge banding on shutter frames. Non soft-close hinges. Inner: Off White/Fabric finish. Outer: per architect design. Excludes electrical, plumbing, lighting, appliances, hob, chimney, sink, tap, granite, bottom ply, painting.' },
-  { cat:'A', sl:2, name:'Wall box', size:'2115 × 600 × 350 mm', sqft:15, rate:1500, amt:22500,
-    desc:'Box type cabinets BWP Grade both-side lamination. 2MM PVC edge banding on shutters. Non soft-close hinges. Inner: Off White/Fabric finish. Outer: per architect design.' },
-  { cat:'A', sl:3, name:'Loft unit', size:'3235 × 900 × 350 mm', sqft:33, rate:800, amt:26400,
-    desc:'Frame & shutter type. BWP Grade both-side lamination. 2MM PVC edge banding. Non soft-close hinges. Inner: Off White/Fabric finish. Outer: per architect design.' },
-  { cat:'A', sl:4, name:'Architrave — 2nd quality teak with polish', size:'5420 × 300 × 18 mm', sqft:19, rate:850, amt:16150,
-    desc:'Second quality teak wood architrave with polish finish.' },
-  { cat:'A', sl:5, name:'PVC Cutlery tray', size:'1 qty', sqft:1, rate:898, amt:898,
-    desc:'PVC cutlery organiser tray for base drawer unit (Unit 1-a).' },
-  { cat:'A', sl:6, name:'Plain basket 4" (no. 1)', size:'1 qty', sqft:1, rate:3250, amt:3250,
-    desc:'Plain 4-inch basket accessory for base unit.' },
-  { cat:'A', sl:7, name:'Plain basket 4" (no. 2)', size:'1 qty', sqft:1, rate:3250, amt:3250,
-    desc:'Plain 4-inch basket accessory for base unit.' },
-  { cat:'A', sl:8, name:'Plain basket 8"', size:'1 qty', sqft:1, rate:3950, amt:3950,
-    desc:'Plain 8-inch basket accessory for base unit.' },
-  { cat:'A', sl:9, name:'Gallery rod', size:'1 qty', sqft:1, rate:466, amt:466,
-    desc:'Gallery rod for wall unit organisation.' },
-  { cat:'A', sl:10, name:'Plate inlet', size:'1 qty', sqft:1, rate:1950, amt:1950,
-    desc:'Plate inlet accessory for base unit.' },
-  { cat:'A', sl:11, name:'Cylinder trolley', size:'1 qty', sqft:1, rate:1648, amt:1648,
-    desc:'Blind corner unit with cylinder trolley — swing door mechanism (Hettich).' },
-  { cat:'A', sl:12, name:'Detergent holder', size:'1 qty', sqft:1, rate:1595, amt:1595,
-    desc:'Swing door with detergent holder (Hettich) for under-sink unit.' },
-  { cat:'A', sl:13, name:'G-profile black handle (base, wall & loft)', size:'3 qty', sqft:3, rate:2500, amt:7500,
-    desc:'Black colour G-profile handle for base and wall units. Loft units with push-to-open system.' },
-  { cat:'A', sl:14, name:'Granite supply & fixing', size:'58 sq.ft', sqft:58, rate:700, amt:40600,
-    desc:'Granite countertop — supply and fixing. Rate per sq.ft. Colour/variety as per client choice.' },
-  { cat:'A', sl:15, name:'Dado tiles supply & fixing', size:'52 sq.ft', sqft:52, rate:490, amt:25480,
-    desc:'Dado tiles for kitchen backsplash — supply and fixing. Rate per sq.ft.' },
-  { cat:'A', sl:16, name:'Kitchen demolition & debris removal', size:'Lump sum', sqft:1, rate:14000, amt:14000,
-    desc:'Complete demolition of existing kitchen setup and removal of all debris from site.' },
-  { cat:'A', sl:17, name:'Soft close system — Ebco (all units)', size:'Lump sum', sqft:1, rate:3500, amt:3500,
-    desc:'Ebco soft-close hinge and channel system for all kitchen units.' },
-  { cat:'A', sl:18, name:'Floor protection cost', size:'Lump sum', sqft:1, rate:5000, amt:5000,
-    desc:'Floor protection covering during entire execution period.' },
-  { cat:'B', sl:1, name:'Kitchen window — UPVC sliding glass', size:'950 × 700 × 30 mm', sqft:8, rate:650, amt:5200,
-    desc:'UPVC frame with sliding glass doors for kitchen window.' },
-  { cat:'B', sl:2, name:'Living hall window — UPVC sliding glass', size:'1000 × 900 × 30 mm', sqft:10, rate:650, amt:6500,
-    desc:'UPVC frame with sliding glass doors for living hall window.' },
-  { cat:'B', sl:3, name:'Bedroom window-1 — UPVC sliding glass', size:'1100 × 1200 × 30 mm', sqft:15, rate:650, amt:9750,
-    desc:'UPVC frame with sliding glass doors for bedroom window-1.' },
-  { cat:'B', sl:4, name:'Bedroom window-2 — UPVC sliding glass', size:'1100 × 1200 × 30 mm', sqft:15, rate:650, amt:9750,
-    desc:'UPVC frame with sliding glass doors for bedroom window-2.' },
-  { cat:'B', sl:5, name:'Window grill — 5 nos', size:'140 kg', sqft:140, rate:135, amt:18900,
-    desc:'MS window grills for all 5 windows. Rate per kg.' },
-  { cat:'B', sl:6, name:'Window grill fixing charges', size:'5 qty', sqft:5, rate:1000, amt:5000,
-    desc:'Labour charges for fixing window grills — 5 windows.' },
-  { cat:'B', sl:7, name:'Wallpaper supply & installation', size:'11 rolls', sqft:11, rate:4500, amt:49500,
-    desc:'Wallpaper supply and installation — price may vary based on selected model/design. 11 rolls estimated.' },
-  { cat:'C', sl:1, name:'Faber chimney 2ft + installation', size:'1 qty', sqft:1, rate:27500, amt:27500,
-    desc:'Faber chimney 2-feet with installation and exhaust pipe included.' },
-  { cat:'C', sl:2, name:'Sink without drain board', size:'1 qty', sqft:1, rate:5600, amt:5600,
-    desc:'Stainless steel kitchen sink without drain board.' },
-  { cat:'C', sl:3, name:'Tap & outlet hose', size:'1 qty', sqft:1, rate:3500, amt:3500,
-    desc:'Kitchen tap and outlet hose set.' },
-  { cat:'C', sl:4, name:'Below counter RO unit', size:'1 qty', sqft:1, rate:19500, amt:19500,
-    desc:'Below-counter reverse osmosis water purifier unit with installation.' },
-  { cat:'C', sl:5, name:'Transportation', size:'Lump sum', sqft:1, rate:2000, amt:2000,
-    desc:'Transportation charges for material delivery to site.' },
+const ITEMS = [
+  {cat:'A',sl:1,name:'Base unit with breakfast counter',size:'6045×860×600 mm',sqft:58,rate:1500,amt:87000,desc:'Box type cabinets, BWP Grade both-side lamination. 2MM PVC edge banding on shutter frames. Non soft-close hinges. Inner: Off White/Fabric. Outer: per architect design. Excludes electrical, plumbing, lighting, hob, chimney, sink, tap, granite, bottom ply, painting.'},
+  {cat:'A',sl:2,name:'Wall box',size:'2115×600×350 mm',sqft:15,rate:1500,amt:22500,desc:'Box type cabinets BWP Grade both-side lamination. 2MM PVC edge banding on shutters. Non soft-close hinges. Inner: Off White/Fabric. Outer: per architect design.'},
+  {cat:'A',sl:3,name:'Loft unit',size:'3235×900×350 mm',sqft:33,rate:800,amt:26400,desc:'Frame & shutter type. BWP Grade both-side lamination. 2MM PVC edge banding. Non soft-close hinges. Inner: Off White/Fabric. Outer: per architect design.'},
+  {cat:'A',sl:4,name:'Architrave — 2nd quality teak with polish',size:'5420×300×18 mm',sqft:19,rate:850,amt:16150,desc:'Second quality teak wood architrave with polish finish.'},
+  {cat:'A',sl:5,name:'PVC Cutlery tray',size:'1 qty',sqft:1,rate:898,amt:898,desc:'PVC cutlery organiser tray for base drawer unit (Unit 1-a).'},
+  {cat:'A',sl:6,name:'Plain basket 4" (no. 1)',size:'1 qty',sqft:1,rate:3250,amt:3250,desc:'Plain 4-inch basket accessory for base unit.'},
+  {cat:'A',sl:7,name:'Plain basket 4" (no. 2)',size:'1 qty',sqft:1,rate:3250,amt:3250,desc:'Plain 4-inch basket accessory for base unit.'},
+  {cat:'A',sl:8,name:'Plain basket 8"',size:'1 qty',sqft:1,rate:3950,amt:3950,desc:'Plain 8-inch basket accessory for base unit.'},
+  {cat:'A',sl:9,name:'Gallery rod',size:'1 qty',sqft:1,rate:466,amt:466,desc:'Gallery rod for wall unit organisation.'},
+  {cat:'A',sl:10,name:'Plate inlet',size:'1 qty',sqft:1,rate:1950,amt:1950,desc:'Plate inlet accessory for base unit.'},
+  {cat:'A',sl:11,name:'Cylinder trolley',size:'1 qty',sqft:1,rate:1648,amt:1648,desc:'Blind corner unit with cylinder trolley — swing door mechanism (Hettich).'},
+  {cat:'A',sl:12,name:'Detergent holder',size:'1 qty',sqft:1,rate:1595,amt:1595,desc:'Swing door with detergent holder (Hettich) for under-sink unit.'},
+  {cat:'A',sl:13,name:'G-profile black handle (base, wall & loft)',size:'3 qty',sqft:3,rate:2500,amt:7500,desc:'Black colour G-profile handle for base and wall units. Loft units with push-to-open system.'},
+  {cat:'A',sl:14,name:'Granite supply & fixing',size:'58 sq.ft',sqft:58,rate:700,amt:40600,desc:'Granite countertop — supply and fixing. Rate per sq.ft. Colour/variety as per client choice.'},
+  {cat:'A',sl:15,name:'Dado tiles supply & fixing',size:'52 sq.ft',sqft:52,rate:490,amt:25480,desc:'Dado tiles for kitchen backsplash — supply and fixing. Rate per sq.ft.'},
+  {cat:'A',sl:16,name:'Kitchen demolition & debris removal',size:'Lump sum',sqft:1,rate:14000,amt:14000,desc:'Complete demolition of existing kitchen setup and removal of all debris from site.'},
+  {cat:'A',sl:17,name:'Soft close system — Ebco (all units)',size:'Lump sum',sqft:1,rate:3500,amt:3500,desc:'Ebco soft-close hinge and channel system for all kitchen units.'},
+  {cat:'A',sl:18,name:'Floor protection cost',size:'Lump sum',sqft:1,rate:5000,amt:5000,desc:'Floor protection covering during entire execution period.'},
+  {cat:'B',sl:1,name:'Kitchen window — UPVC sliding glass',size:'950×700×30 mm',sqft:8,rate:650,amt:5200,desc:'UPVC frame with sliding glass doors for kitchen window.'},
+  {cat:'B',sl:2,name:'Living hall window — UPVC sliding glass',size:'1000×900×30 mm',sqft:10,rate:650,amt:6500,desc:'UPVC frame with sliding glass doors for living hall window.'},
+  {cat:'B',sl:3,name:'Bedroom window-1 — UPVC sliding glass',size:'1100×1200×30 mm',sqft:15,rate:650,amt:9750,desc:'UPVC frame with sliding glass doors for bedroom window-1.'},
+  {cat:'B',sl:4,name:'Bedroom window-2 — UPVC sliding glass',size:'1100×1200×30 mm',sqft:15,rate:650,amt:9750,desc:'UPVC frame with sliding glass doors for bedroom window-2.'},
+  {cat:'B',sl:5,name:'Window grill — 5 nos',size:'140 kg',sqft:140,rate:135,amt:18900,desc:'MS window grills for all 5 windows. Rate per kg.'},
+  {cat:'B',sl:6,name:'Window grill fixing charges',size:'5 qty',sqft:5,rate:1000,amt:5000,desc:'Labour charges for fixing window grills — 5 windows.'},
+  {cat:'B',sl:7,name:'Wallpaper supply & installation',size:'11 rolls',sqft:11,rate:4500,amt:49500,desc:'Wallpaper supply and installation — price may vary by selected model/design. 11 rolls estimated.'},
+  {cat:'C',sl:1,name:'Faber chimney 2ft + installation',size:'1 qty',sqft:1,rate:27500,amt:27500,desc:'Faber chimney 2-feet with installation and exhaust pipe included.'},
+  {cat:'C',sl:2,name:'Sink without drain board',size:'1 qty',sqft:1,rate:5600,amt:5600,desc:'Stainless steel kitchen sink without drain board.'},
+  {cat:'C',sl:3,name:'Tap & outlet hose',size:'1 qty',sqft:1,rate:3500,amt:3500,desc:'Kitchen tap and outlet hose set.'},
+  {cat:'C',sl:4,name:'Below counter RO unit',size:'1 qty',sqft:1,rate:19500,amt:19500,desc:'Below-counter reverse osmosis water purifier unit with installation.'},
+  {cat:'C',sl:5,name:'Transportation',size:'Lump sum',sqft:1,rate:2000,amt:2000,desc:'Transportation charges for material delivery to site.'},
 ];
-
-const catMeta = {
-  A: { name:'Kitchen Laminate Woodwork — BWP Grade', cls:'a' },
-  B: { name:'Windows & Wallpaper', cls:'b' },
-  C: { name:'Kitchen Appliances', cls:'c' },
+const CAT = {
+  A:{name:'Kitchen Laminate Woodwork — BWP Grade',cls:'a',label:'Woodwork'},
+  B:{name:'Windows & Wallpaper',cls:'b',label:'Windows'},
+  C:{name:'Kitchen Appliances',cls:'c',label:'Appliance'},
 };
+const GRAND = 504848;
+const fmt = n => '₹' + Math.round(n).toLocaleString('en-IN');
+const key = i => i.cat+'-'+i.sl;
 
-const fmt = n => '₹' + n.toLocaleString('en-IN');
-let selected = new Set();
+let skipped = new Set();
 let activeFilter = 'all';
-let openCard = null;
+let openKey = null;
 
-function render() {
-  const main = document.getElementById('main');
-  const cats = ['A','B','C'];
+function render(){
+  const el = document.getElementById('main');
   let html = '';
-  cats.forEach(cat => {
-    const items = data.filter(i => i.cat === cat && (activeFilter === 'all' || activeFilter === cat));
-    if (!items.length) return;
-    const m = catMeta[cat];
-    const catTotal = items.reduce((s,i) => s+i.amt, 0);
-    html += `<div class="cat-header">
-      <div class="cat-dot ${m.cls}"></div>
-      <div class="cat-title">${m.name}</div>
-      <div class="cat-line"></div>
-      <div class="cat-total">${fmt(catTotal)}</div>
-    </div>
-    <div class="items-grid">`;
-    items.forEach(item => {
-      const key = item.cat + item.sl;
-      const sel = selected.has(key);
-      html += `<div class="item-card ${sel?'selected':''}" id="card-${key}" onclick="toggleCard('${key}')">
-        <div class="card-top">
-          <div class="item-num">${item.sl}</div>
-          <span class="cat-pill ${m.cls}">${cat === 'A' ? 'Woodwork' : cat === 'B' ? 'Windows' : 'Appliance'}</span>
+
+  if(activeFilter === 'skip'){
+    const items = ITEMS.filter(i => skipped.has(key(i)));
+    html += buildSkipBlock(items, false);
+  } else {
+    ['A','B','C'].forEach(cat => {
+      if(activeFilter !== 'all' && activeFilter !== cat) return;
+      const items = ITEMS.filter(i => i.cat===cat && !skipped.has(key(i)));
+      if(!items.length) return;
+      const m = CAT[cat];
+      const total = items.reduce((s,i)=>s+i.amt,0);
+      html += `<div class="cat-header">
+        <div class="cat-dot ${m.cls}"></div>
+        <div class="cat-title">${m.name}</div>
+        <div class="cat-line"></div>
+        <div class="cat-meta">
+          <span class="cat-count">${items.length} item${items.length!==1?'s':''}</span>
+          <span class="cat-total">${fmt(total)}</span>
         </div>
-        <div class="item-name">${item.name}</div>
-        <div class="item-size">${item.size} &nbsp;·&nbsp; ${item.sqft} units</div>
-        <div class="card-bottom">
-          <div class="rate-info">
-            <span>Rate: ${fmt(item.rate)}</span>
-            <span>per ${item.sqft > 1 && item.size.includes('sq') ? 'sq.ft' : item.sqft > 1 ? 'unit' : 'item'}</span>
-          </div>
-          <div>
-            <div class="item-amount">${fmt(item.amt)}</div>
-            <div class="item-gst">+${fmt(Math.round(item.amt*0.18))} GST</div>
-          </div>
-        </div>
-      </div>`;
+      </div><div class="items-grid">`;
+      items.forEach(item => { html += card(item, false, m); });
+      html += `</div>`;
     });
-    html += `</div>`;
-  });
-  main.innerHTML = html;
+
+    // Not-needed zone — always render in all/category view
+    const skippedItems = ITEMS.filter(i => skipped.has(key(i)) && (activeFilter==='all' || activeFilter===i.cat));
+    if(skippedItems.length || activeFilter==='all'){
+      html += `<div class="not-needed-zone">`;
+      html += buildSkipBlock(skippedItems, true);
+      html += `</div>`;
+    }
+  }
+  el.innerHTML = html;
   updateTotals();
 }
 
-function toggleCard(key) {
-  const item = data.find(i => i.cat + i.sl === key);
-  if (selected.has(key)) {
-    selected.delete(key);
+function buildSkipBlock(items, compact){
+  const total = items.reduce((s,i)=>s+i.amt,0);
+  let h = `<div class="cat-header">
+    <div class="cat-dot skip"></div>
+    <div class="cat-title skip-title">Not Needed</div>
+    <div class="cat-line"></div>
+    <div class="cat-meta">
+      <span class="cat-count">${items.length} item${items.length!==1?'s':''}</span>
+      ${items.length?`<span class="cat-total skip-total">${fmt(total)}</span>`:''}
+    </div>
+  </div>`;
+  if(!items.length){
+    h += `<div class="nn-empty"><span class="nn-empty-icon">✓</span>No items here yet.<br>Hit the <strong>×</strong> button on any card to move it here.</div>`;
   } else {
-    selected.add(key);
+    h += `<div class="items-grid">`;
+    items.forEach(item => { h += card(item, true, CAT[item.cat]); });
+    h += `</div>`;
   }
-  openDrawer(item, key);
+  return h;
+}
+
+function card(item, isSkipped, m){
+  const k = key(item);
+  return `<div class="item-card ${isSkipped?'skipped':''}" onclick="openDrawer('${k}')">
+    <div class="card-top">
+      <div class="item-num">${item.sl}</div>
+      <div class="card-actions">
+        <span class="cat-pill ${isSkipped?'skip':m.cls}">${isSkipped?'Not needed':m.label}</span>
+        <button class="skip-btn-card" onclick="toggleSkip(event,'${k}')" title="${isSkipped?'Move back':'Mark as not needed'}">${isSkipped?'↩':'×'}</button>
+      </div>
+    </div>
+    <div class="item-name">${item.name}</div>
+    <div class="item-size">${item.size}</div>
+    <div class="card-bottom">
+      <div class="rate-info">
+        <span>Rate: ${fmt(item.rate)}</span>
+        <span>× ${item.sqft} ${item.size.includes('sq')?'sq.ft':item.sqft>1?'units':'item'}</span>
+      </div>
+      <div>
+        <div class="item-amount">${fmt(item.amt)}</div>
+        <div class="item-gst">+${fmt(Math.round(item.amt*0.18))} GST</div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function toggleSkip(e, k){
+  e.stopPropagation();
+  skipped.has(k) ? skipped.delete(k) : skipped.add(k);
+  if(openKey === k) closeDrawer();
   render();
 }
 
-function openDrawer(item, key) {
-  const m = catMeta[item.cat];
+function openDrawer(k){
+  const item = ITEMS.find(i => key(i)===k);
+  if(!item) return;
+  const isSkipped = skipped.has(k);
   document.getElementById('d-title').textContent = item.name;
   document.getElementById('d-grid').innerHTML = `
     <div class="d-stat"><div class="d-stat-label">Unit rate</div><div class="d-stat-val">${fmt(item.rate)}</div></div>
@@ -602,75 +383,102 @@ function openDrawer(item, key) {
     <div class="d-stat"><div class="d-stat-label">Base amount</div><div class="d-stat-val gold">${fmt(item.amt)}</div></div>
     <div class="d-stat"><div class="d-stat-label">GST 18%</div><div class="d-stat-val">${fmt(Math.round(item.amt*0.18))}</div></div>
     <div class="d-stat"><div class="d-stat-label">Incl. GST</div><div class="d-stat-val gold">${fmt(Math.round(item.amt*1.18))}</div></div>`;
-  document.getElementById('d-desc').innerHTML = `<strong style="color:var(--brown)">Details:</strong> ${item.desc}`;
+  document.getElementById('d-desc').textContent = item.desc;
+  document.getElementById('d-actions').innerHTML = isSkipped
+    ? `<button class="da-btn da-restore" onclick="toggleSkip(event,'${k}');closeDrawer()">↩ Move back to quote</button><span class="da-hint">Currently in Not Needed</span>`
+    : `<button class="da-btn da-skip" onclick="toggleSkip(event,'${k}');closeDrawer()">× Move to Not Needed</button><span class="da-hint">Removes from effective total</span>`;
   document.getElementById('drawer').classList.add('open');
-  openCard = key;
+  openKey = k;
 }
 
-function closeDrawer() {
+function closeDrawer(){
   document.getElementById('drawer').classList.remove('open');
-  openCard = null;
+  openKey = null;
 }
 
-function updateTotals() {
-  const total = [...selected].reduce((s, key) => {
-    const item = data.find(i => i.cat + i.sl === key);
-    return s + (item ? item.amt : 0);
-  }, 0);
-  document.getElementById('selAmt').textContent = fmt(total);
-  const badge = document.getElementById('selBadge');
-  if (selected.size > 0) {
-    badge.textContent = `${selected.size} item${selected.size>1?'s':''} selected`;
-    badge.classList.add('show');
+function updateTotals(){
+  const skippedBase = [...skipped].reduce((s,k)=>{
+    const item = ITEMS.find(i=>key(i)===k);
+    return s+(item?item.amt:0);
+  },0);
+  const skippedIncGST = Math.round(skippedBase*1.18);
+  const effective = GRAND - skippedIncGST;
+
+  document.getElementById('effectiveTotal').textContent = fmt(effective);
+  document.getElementById('skippedAmt').textContent = skipped.size>0 ? fmt(skippedIncGST) : '—';
+
+  const badge = document.getElementById('skipBadge');
+  skipped.size>0 ? (badge.textContent=`${skipped.size} not needed`, badge.classList.add('show')) : badge.classList.remove('show');
+
+  // Section total pill
+  const pill = document.getElementById('secPill');
+  const secVal = document.getElementById('sectionTotalVal');
+  if(activeFilter !== 'all'){
+    let secItems, label;
+    if(activeFilter==='skip'){
+      secItems = ITEMS.filter(i=>skipped.has(key(i)));
+      label = 'Not needed';
+    } else {
+      secItems = ITEMS.filter(i=>i.cat===activeFilter && !skipped.has(key(i)));
+      label = CAT[activeFilter].name.split('—')[0].trim();
+    }
+    const secBase = secItems.reduce((s,i)=>s+i.amt,0);
+    const secGST = Math.round(secBase*1.18);
+    pill.textContent = `${label}: ${fmt(secBase)} base · ${fmt(secGST)} incl. GST`;
+    pill.classList.add('show');
+    secVal.textContent = fmt(secBase);
   } else {
-    badge.classList.remove('show');
+    pill.classList.remove('show');
+    secVal.textContent = '—';
   }
+
+  // Footer
+  const fe = document.getElementById('footer-eff');
+  const fn = document.getElementById('footer-note');
+  if(fe) fe.textContent = fmt(effective);
+  if(fn) fn.textContent = skipped.size>0
+    ? `${skipped.size} item${skipped.size!==1?'s':''} excluded · saving ${fmt(skippedIncGST)}`
+    : 'No items excluded yet';
 }
 
-function filter(cat, btn) {
+function filter(cat, btn){
   activeFilter = cat;
-  document.querySelectorAll('.fbtn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
   closeDrawer();
   render();
 }
 
-document.addEventListener('keydown', e => { if(e.key==='Escape') closeDrawer(); });
-
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeDrawer(); });
 render();
 </script>
 
-<!-- SUMMARY FOOTER -->
 <div class="summary-footer">
   <div class="summary-footer-inner">
-    <div class="sf-left">
-      <div class="sf-label">Grand total incl. GST</div>
+    <div>
+      <div class="sf-label">Original quote incl. GST</div>
       <div class="sf-amount">₹5,04,848<small>Base ₹4,27,837 + GST ₹77,011</small></div>
+      <div class="sf-effective">
+        <div class="sf-eff-label">Your effective total</div>
+        <div class="sf-eff-val" id="footer-eff">₹5,04,848</div>
+        <div class="sf-eff-note" id="footer-note">No items excluded yet</div>
+      </div>
     </div>
     <div class="sf-right">
-      <div class="sf-row">
-        <span class="sf-row-label">70% — Production milestone</span>
-        <span class="sf-row-val">₹3,53,393</span>
+      <div class="sf-row"><span class="sf-row-label">70% — Production milestone</span><span class="sf-row-val">₹3,53,393</span></div>
+      <div class="sf-row"><span class="sf-row-label">25% — Execution milestone</span><span class="sf-row-val">₹1,26,212</span></div>
+      <div class="sf-row"><span class="sf-row-label">5% — Completion & handover</span><span class="sf-row-val">₹25,242</span></div>
+      <div class="sf-row" style="border-top:1px solid rgba(196,154,60,0.3);margin-top:6px;padding-top:12px">
+        <span class="sf-row-label" style="color:var(--gold-light)">Woodwork warranty</span><span class="sf-row-val">5 years</span>
       </div>
       <div class="sf-row">
-        <span class="sf-row-label">25% — Execution milestone</span>
-        <span class="sf-row-val">₹1,26,212</span>
+        <span class="sf-row-label" style="color:var(--gold-light)">Accessories warranty</span><span class="sf-row-val">1 year</span>
       </div>
       <div class="sf-row">
-        <span class="sf-row-label">5% — Completion & handover</span>
-        <span class="sf-row-val">₹25,242</span>
-      </div>
-      <div class="sf-row" style="border-top:1px solid rgba(196,154,60,0.3);margin-top:4px;padding-top:12px">
-        <span class="sf-row-label" style="color:var(--gold-light)">Woodwork warranty</span>
-        <span class="sf-row-val">5 years</span>
-      </div>
-      <div class="sf-row">
-        <span class="sf-row-label" style="color:var(--gold-light)">Accessories warranty</span>
-        <span class="sf-row-val">1 year</span>
+        <span class="sf-row-label" style="color:var(--gold-light)">Quote valid · Delivery</span><span class="sf-row-val">15 days · 40 days</span>
       </div>
     </div>
   </div>
 </div>
-
 </body>
 </html>
